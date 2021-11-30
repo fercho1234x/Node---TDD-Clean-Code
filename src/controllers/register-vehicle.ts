@@ -1,8 +1,11 @@
+import { HttpRequest, HttpResponse } from '../interfaces/http-interface'
 export class RegisterVehicle {
-  handle (httpRequest: any): any {
+  handle (httpRequest: HttpRequest): HttpResponse {
+    let response
+
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (!httpRequest.body.name) {
-      return {
+      response = {
         statusCode: 400,
         body: new Error('error in the: name')
       }
@@ -10,10 +13,12 @@ export class RegisterVehicle {
 
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     if (!httpRequest.body.model) {
-      return {
+      response = {
         statusCode: 400,
         body: new Error('error in the: model')
       }
     }
+
+    return response
   }
 }
