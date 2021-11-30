@@ -4,10 +4,12 @@ describe('Classes', () => {
     const foodModel = new Food({
       name: 'Test One',
       description: 'This is a description',
-      price: 200
+      price: 200,
+      inventory: 10
     })
     expect(foodModel.getName()).toEqual('Test One')
     expect(foodModel.getDescription()).toEqual('This is a description')
     expect(foodModel.getPrice()).toBe(200)
+    expect(foodModel.getInventory()).toBe(10)
   })
 })
