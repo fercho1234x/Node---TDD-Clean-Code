@@ -2,6 +2,10 @@ import { FoodHelper } from '../helpers/food-model-helper'
 export class Food {
   constructor (private readonly food: FoodHelper) {}
 
+  getFood (): FoodHelper {
+    return Object.assign(this)
+  }
+
   getName (): string {
     return this.food.name
   }
