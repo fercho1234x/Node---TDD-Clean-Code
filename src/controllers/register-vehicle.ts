@@ -1,4 +1,5 @@
 import { HttpRequest, HttpResponse } from '../interfaces/http-interface'
+import { MissingFormalParameter } from '../errors/client-error'
 export class RegisterVehicle {
   handle (httpRequest: HttpRequest): HttpResponse {
     const requiredProperties = ['name', 'model', 'year', 'color']
@@ -11,7 +12,7 @@ export class RegisterVehicle {
     requiredProperties.forEach(prop => {
       // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!httpRequest.body[prop]) {
-        response.body = new Error(`error in the: ${prop}`)
+        response.body = new MissingFormalParameter(prop)
         return response
       }
     })
